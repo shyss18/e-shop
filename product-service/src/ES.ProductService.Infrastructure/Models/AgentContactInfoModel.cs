@@ -1,6 +1,6 @@
-namespace ES.ProductService.Domain.Entities;
+namespace ES.ProductService.Infrastructure.Models;
 
-public class AgentContactInfo
+public class AgentContactInfoModel
 {
     public Guid Id { get; set; }
 
@@ -11,4 +11,8 @@ public class AgentContactInfo
     public string Address { get; set; }
 
     public string Zip { get; set; }
+
+    public Guid AgentId { get; set; }
+    
+    public AgentModel Agent { get; set; }
 }

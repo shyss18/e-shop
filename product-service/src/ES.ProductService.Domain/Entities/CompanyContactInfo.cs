@@ -11,6 +11,4 @@ public class CompanyContactInfo
     public string Address { get; set; }
 
     public string Zip { get; set; }
-
-    public Company Company { get; set; }
 }
