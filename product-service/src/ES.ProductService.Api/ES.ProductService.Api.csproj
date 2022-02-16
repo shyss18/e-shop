@@ -13,13 +13,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Extensions" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
+      <PackageReference Include="AutoMapper" Version="11.0.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
       <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
       <PackageReference Include="Serilog.Expressions" Version="3.2.1" />
       <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Endpoints\Product\Mappings" />
+      <Folder Include="Endpoints\Product\Responses" />
     </ItemGroup>
 
 </Project>

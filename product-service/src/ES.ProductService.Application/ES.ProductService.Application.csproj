@@ -12,11 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Commands" />
-      <Folder Include="Queries" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ES.ProductService.Domain\ES.ProductService.Domain.csproj" />
     </ItemGroup>
 
