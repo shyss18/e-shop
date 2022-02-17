@@ -1,24 +1,17 @@
 using ES.ProductService.Api.Extensions;
-using ES.ProductService.Api.PipelineBehavior;
-using ES.ProductService.Application.Commands.CreateProduct;
 using ES.ProductService.Infrastructure.Context;
-using MediatR;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host
     .UseSerilog((hostContext, loggerConfiguration) =>
-        loggerConfiguration.WriteTo.Console()
-            .ReadFrom.Configuration(hostContext.Configuration));
+        loggerConfiguration.ReadFrom.Configuration(hostContext.Configuration));
 
-builder.Services.AddControllers();
-
-builder.Services.AddMediatR(typeof(CreateProductCommand));
-builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
-
-builder.Services.AddAutoMapper(typeof(Program), typeof(ApplicationContext));
-
-builder.Services.AddDbSupport(builder.Configuration);
+builder.Services
+    .AddMediatrSupport()
+    .AddDbSupport(builder.Configuration)
+    .AddAutoMapper(typeof(Program), typeof(ApplicationContext))
+    .AddControllers();
 
 var app = builder.Build();
 app.UseSerilogRequestLogging();

@@ -1,19 +1,28 @@
+using ES.ProductService.Api.PipelineBehavior;
+using ES.ProductService.Application.Commands.CreateProduct;
 using ES.ProductService.Infrastructure.Context;
-using ES.ProductService.Infrastructure.Repository;
+using ES.ProductService.Infrastructure.Extensions;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace ES.ProductService.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    public static IServiceCollection AddMediatrSupport(this IServiceCollection services)
+    {
+        services.AddMediatR(typeof(CreateProductCommand));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
+        return services;
+    }
+
     public static IServiceCollection AddDbSupport(this IServiceCollection services,
         ConfigurationManager configurationManager)
     {
-        services.AddDbContext<ApplicationContext>(options =>
-            options.UseNpgsql(configurationManager.GetConnectionString("ApplicationContext")));
-
-        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
+        services
+            .AddRepositories()
+            .AddDbContext<ApplicationContext>(options =>
+                options.UseNpgsql(configurationManager.GetConnectionString("ApplicationContext")));
         return services;
     }
 }

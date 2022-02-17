@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace ES.ProductService.Infrastructure.Repository;
+namespace ES.ProductService.Application.Contracts.Repositories;
 
 public interface IGenericRepository<TEntity>
 {
