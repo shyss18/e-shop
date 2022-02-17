@@ -10,8 +10,14 @@ public class ProductModelMapping : Profile
     public ProductModelMapping()
     {
         CreateMap<Product, ProductModel>()
-            .ForMember(dest => dest.AgentId, opt => opt.MapFrom(src => src.Agent.Id))
-            .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images))
+            .ForPath(dest => dest.AgentId, opt => opt.MapFrom(src => src.Agent.Id))
+            .ReverseMap();
+
+        CreateMap<Agent, AgentModel>()
+            .ForPath(dest => dest.CompanyId, opt => opt.MapFrom(src => src.Company.Id))
+            .ReverseMap();
+
+        CreateMap<Company, CompanyModel>()
             .ReverseMap();
 
         CreateMap<Expression<Func<Product, bool>>, Expression<Func<ProductModel, bool>>>();

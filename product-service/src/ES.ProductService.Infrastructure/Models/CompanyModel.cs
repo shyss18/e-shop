@@ -7,8 +7,6 @@ public class CompanyModel
     public string Name { get; set; }
 
     public string Description { get; set; }
-
-    public Guid ContactInfoId { get; set; }
     
     public CompanyContactInfoModel ContactInfo { get; set; }
 

@@ -10,7 +10,7 @@ public class ProductCommandMapping : Profile
     public ProductCommandMapping()
     {
         CreateMap<CreateProductCommand, Product>()
-            .ForMember(dest => dest.Agent.Id, opt => opt.MapFrom(src => src.AgentId));
+            .ForPath(dest => dest.Agent.Id, opt => opt.MapFrom(src => src.AgentId));
 
         CreateMap<ChangeProductCommand, Product>();
     }

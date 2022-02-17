@@ -6,8 +6,6 @@ public class AgentModel
 
     public string Name { get; set; }
     
-    public Guid ContactInfoId { get; set; }
-    
     public AgentContactInfoModel ContactInfo { get; set; }
 
     public Guid CompanyId { get; set; }

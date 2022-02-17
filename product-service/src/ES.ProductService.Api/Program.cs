@@ -1,6 +1,8 @@
 using ES.ProductService.Api.Extensions;
 using ES.ProductService.Application.Commands.CreateProduct;
+using ES.ProductService.Application.Validators;
 using ES.ProductService.Infrastructure.Context;
+using FluentValidation;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services
     .AddMediatrSupport()
     .AddDbSupport(builder.Configuration)
     .AddAutoMapper(typeof(Program), typeof(ApplicationContext), typeof(CreateProductCommand))
+    .AddValidatorsFromAssembly(typeof(CreateProductValidator).Assembly)
     .AddControllers();
 
 var app = builder.Build();

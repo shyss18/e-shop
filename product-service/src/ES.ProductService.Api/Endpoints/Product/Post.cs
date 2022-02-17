@@ -22,8 +22,9 @@ public class Post : EndpointBaseAsync.WithRequest<CreateProductViewModel>.WithAc
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [Consumes("application/json")]
     [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public override async Task<ActionResult> HandleAsync([FromBody] CreateProductViewModel request,
         CancellationToken cancellationToken = new())
     {

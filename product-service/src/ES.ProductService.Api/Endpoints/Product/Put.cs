@@ -22,8 +22,9 @@ public class Put : EndpointBaseAsync.WithRequest<ChangeProductViewModel>.WithAct
     }
 
     [HttpPut]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [Consumes("application/json")]
     [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public override async Task<ActionResult> HandleAsync([FromBody] ChangeProductViewModel request,
         CancellationToken cancellationToken = new())
     {

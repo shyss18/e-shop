@@ -1,6 +1,7 @@
 using MediatR;
+using Microsoft.Extensions.Logging;
 
-namespace ES.ProductService.Api.PipelineBehavior;
+namespace ES.ProductService.Application.PipelineBehavior;
 
 public class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
