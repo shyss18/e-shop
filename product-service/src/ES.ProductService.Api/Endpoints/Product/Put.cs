@@ -28,7 +28,7 @@ public class Put : EndpointBaseAsync.WithRequest<ChangeProductViewModel>.WithAct
         CancellationToken cancellationToken = new())
     {
         var changeProductCommand = _mapper.Map<ChangeProductCommand>(request);
-        var response = await _mediator.Send(changeProductCommand, cancellationToken);
+        await _mediator.Send(changeProductCommand, cancellationToken);
         return new OkObjectResult(null);
     }
 }

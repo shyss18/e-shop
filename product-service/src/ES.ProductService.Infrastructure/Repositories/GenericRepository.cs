@@ -55,4 +55,14 @@ public class GenericRepository<TEntity, TModel> : IGenericRepository<TEntity> wh
 
         return _mapper.Map<TEntity[]>(result);
     }
+
+    public async Task<TEntity[]> GetRangeAsync(CancellationToken cancellationToken)
+    {
+        var result = await _applicationContext
+            .Set<TModel>()
+            .AsNoTracking()
+            .ToArrayAsync(cancellationToken);
+
+        return _mapper.Map<TEntity[]>(result);
+    }
 }

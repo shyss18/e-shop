@@ -21,9 +21,4 @@
       <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Endpoints\Product\Mappings" />
-      <Folder Include="Endpoints\Product\Responses" />
-    </ItemGroup>
-
 </Project>

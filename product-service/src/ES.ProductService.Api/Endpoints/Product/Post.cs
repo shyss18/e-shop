@@ -28,7 +28,7 @@ public class Post : EndpointBaseAsync.WithRequest<CreateProductViewModel>.WithAc
         CancellationToken cancellationToken = new())
     {
         var createProductCommand = _mapper.Map<CreateProductCommand>(request);
-        var response = await _mediator.Send(createProductCommand, cancellationToken);
+        await _mediator.Send(createProductCommand, cancellationToken);
         return new OkObjectResult(null);
     }
 }

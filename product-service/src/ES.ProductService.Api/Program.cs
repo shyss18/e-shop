@@ -1,4 +1,5 @@
 using ES.ProductService.Api.Extensions;
+using ES.ProductService.Application.Commands.CreateProduct;
 using ES.ProductService.Infrastructure.Context;
 using Serilog;
 
@@ -10,7 +11,7 @@ builder.Host
 builder.Services
     .AddMediatrSupport()
     .AddDbSupport(builder.Configuration)
-    .AddAutoMapper(typeof(Program), typeof(ApplicationContext))
+    .AddAutoMapper(typeof(Program), typeof(ApplicationContext), typeof(CreateProductCommand))
     .AddControllers();
 
 var app = builder.Build();

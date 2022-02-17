@@ -11,4 +11,6 @@ public interface IGenericRepository<TEntity>
     Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken);
 
     Task<TEntity[]> GetRangeAsync(Expression<Func<TEntity, bool>> expression, CancellationToken cancellationToken);
+    
+    Task<TEntity[]> GetRangeAsync(CancellationToken cancellationToken);
 }
