@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  product-api:
+    container_name: "product-api"
+    depends_on:
+      - product-postgres
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "5106:5106"
+      - "7256:7256"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7256;http://+:5106
+      - ASPNETCORE_HTTPS_PORT=7256
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/ES.ProductService.pfx
+      - ConnectionStrings__ApplicationContext=host=product-postgres;Port=5432;Username=productUser;Password=productPassword;Database=product_development;
+    volumes:
+      - ${HOME}/.aspnet/https:/https/
+    networks:
+      - product-network-dev
+  
+  product-postgres:
+    container_name: "product-postgres"
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=productPassword
+      - POSTGRES_USER=productUser
+      - POSTGRES_DB=product_development
+    ports:
+      - "5432:5432"
+    networks:
+      - product-network-dev
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+
+networks:
+  product-network-dev:
+    driver: bridge
+
+volumes:
+  postgres_volume:
