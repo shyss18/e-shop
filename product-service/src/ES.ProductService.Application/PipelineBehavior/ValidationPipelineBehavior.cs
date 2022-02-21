@@ -1,7 +1,6 @@
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using Microsoft.Extensions.Logging;
 
 namespace ES.ProductService.Application.PipelineBehavior;
 
@@ -9,14 +8,11 @@ public class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior
     where TRequest : IRequest<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
-    private readonly ILogger<ValidationPipelineBehavior<TRequest, TResponse>> _logger;
 
     public ValidationPipelineBehavior(
-        IEnumerable<IValidator<TRequest>> validators,
-        ILogger<ValidationPipelineBehavior<TRequest, TResponse>> logger)
+        IEnumerable<IValidator<TRequest>> validators)
     {
         _validators = validators;
-        _logger = logger;
     }
 
     public async Task<TResponse> Handle(
