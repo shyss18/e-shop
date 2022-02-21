@@ -11,12 +11,22 @@
       <ProjectReference Include="..\ES.ProductService.Application\ES.ProductService.Application.csproj" />
       <ProjectReference Include="..\ES.ProductService.Domain\ES.ProductService.Domain.csproj" />
       <ProjectReference Include="..\ES.ProductService.Infrastructure\ES.ProductService.Infrastructure.csproj" />
+      <ProjectReference Include="..\ES.ProductService.Migrations\ES.ProductService.Migrations.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
       <PackageReference Include="AutoMapper" Version="11.0.1" />
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
       <PackageReference Include="Serilog.Expressions" Version="3.2.1" />
       <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />

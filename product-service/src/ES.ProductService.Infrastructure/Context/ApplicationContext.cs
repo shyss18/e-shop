@@ -5,6 +5,10 @@ namespace ES.ProductService.Infrastructure.Context;
 
 public class ApplicationContext : DbContext
 {
+    public const string ConnectionString = "ApplicationContext";
+    
+    public const string MigrationAssembly = "ES.ProductService.Api";
+    
     public DbSet<ProductModel> Products { get; set; }
 
     public DbSet<ProductImageModel> ProductImages { get; set; }

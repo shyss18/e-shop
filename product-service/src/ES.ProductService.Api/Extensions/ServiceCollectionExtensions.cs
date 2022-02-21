@@ -1,7 +1,10 @@
 using ES.ProductService.Application.Commands.CreateProduct;
+using ES.ProductService.Application.Contracts.Repositories;
 using ES.ProductService.Application.PipelineBehavior;
+using ES.ProductService.Domain.Entities;
 using ES.ProductService.Infrastructure.Context;
-using ES.ProductService.Infrastructure.Extensions;
+using ES.ProductService.Infrastructure.Models;
+using ES.ProductService.Infrastructure.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,10 +24,14 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services,
         ConfigurationManager configurationManager)
     {
-        services
-            .AddRepositories()
-            .AddDbContext<ApplicationContext>(options =>
-                options.UseNpgsql(configurationManager.GetConnectionString("ApplicationContext")));
+        var connectionString = configurationManager.GetConnectionString(ApplicationContext.ConnectionString);
+
+        services.AddScoped<IGenericRepository<Agent>, GenericRepository<Agent, AgentModel>>();
+        services.AddScoped<IGenericRepository<Product>, GenericRepository<Product, ProductModel>>();
+
+        services.AddDbContext<ApplicationContext>(opt =>
+            opt.UseNpgsql(connectionString, x => x.MigrationsAssembly(ApplicationContext.MigrationAssembly)));
+
         return services;
     }
 }

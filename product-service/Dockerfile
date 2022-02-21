@@ -9,6 +9,7 @@ COPY ["src/ES.ProductService.Api/ES.ProductService.Api.csproj", "ES.ProductServi
 COPY ["src/ES.ProductService.Application/ES.ProductService.Application.csproj", "ES.ProductService.Application/"]
 COPY ["src/ES.ProductService.Domain/ES.ProductService.Domain.csproj", "ES.ProductService.Domain/"]
 COPY ["src/ES.ProductService.Infrastructure/ES.ProductService.Infrastructure.csproj", "ES.ProductService.Infrastructure/"]
+COPY ["src/ES.ProductService.Migrations/ES.ProductService.Migrations.csproj", "ES.ProductService.Migrations/"]
 RUN dotnet restore "ES.ProductService.Api/ES.ProductService.Api.csproj"
 
 COPY ["/src", "."]

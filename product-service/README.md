@@ -32,4 +32,13 @@ In docker-compose file change:<br />
 `- ASPNETCORE_Kestrel__Certificates__Default__Password` - with your password
 
 Then go to deploy folder, open cmd/PowerShell/bash/etc. and run:<br />
+
 `docker-compose -f "docker-compose.yml" -p product-service-container up -d`
+
+# How to add migrations
+
+Open `ES.ProductService.Api` project folder and then run following command:<br />
+
+`dotnet ef migrations add { MigrationName } -o ../ES.ProductService.Migrations/Migrations`
+
+Migrations will be automatically applied when project run.
