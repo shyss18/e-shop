@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ES.ProductService.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ES.ProductService.Migrations", "src\ES.ProductService.Migrations\ES.ProductService.Migrations.csproj", "{0875CD8A-1C86-45E3-AEF0-0D997BB4900F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ES.ProductService.Application.UnitTests", "tests\ES.ProductService.Application.UnitTests\ES.ProductService.Application.UnitTests.csproj", "{3EBABA4A-3DB1-4D5C-9D10-D6B232632008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{0875CD8A-1C86-45E3-AEF0-0D997BB4900F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0875CD8A-1C86-45E3-AEF0-0D997BB4900F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0875CD8A-1C86-45E3-AEF0-0D997BB4900F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EBABA4A-3DB1-4D5C-9D10-D6B232632008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EBABA4A-3DB1-4D5C-9D10-D6B232632008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EBABA4A-3DB1-4D5C-9D10-D6B232632008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EBABA4A-3DB1-4D5C-9D10-D6B232632008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E7909E16-A1FB-42FA-9BA5-B867DD667867} = {69217A54-4280-4B47-81E8-0A3AA38825CA}
@@ -47,5 +53,6 @@ Global
 		{D4EEC377-33C1-4EB2-A2C1-5B4F87F59CF9} = {69217A54-4280-4B47-81E8-0A3AA38825CA}
 		{956E343C-32CC-4139-B59F-5A293D5B9AD5} = {69217A54-4280-4B47-81E8-0A3AA38825CA}
 		{0875CD8A-1C86-45E3-AEF0-0D997BB4900F} = {69217A54-4280-4B47-81E8-0A3AA38825CA}
+		{3EBABA4A-3DB1-4D5C-9D10-D6B232632008} = {74EE2B3C-055D-4717-8E1D-098DAA55D79C}
 	EndGlobalSection
 EndGlobal
