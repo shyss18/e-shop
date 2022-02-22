@@ -43,4 +43,4 @@ Open `ES.ProductService.Api` project folder and then run following command:<br /
 
 After that copy context snapshot to the `ES.ProductService.Migrations/Migrations` folder
 
-Migrations will be automatically applied when project run.
+Migrations will be automatically applied when project runs.
