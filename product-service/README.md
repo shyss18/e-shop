@@ -41,4 +41,6 @@ Open `ES.ProductService.Api` project folder and then run following command:<br /
 
 `dotnet ef migrations add { MigrationName } -o ../ES.ProductService.Migrations/Migrations`
 
+After that copy context snapshot to the `ES.ProductService.Migrations/Migrations` folder
+
 Migrations will be automatically applied when project run.

@@ -10,5 +10,5 @@ public class CreateProductViewModel
 
     public Guid AgentId { get; set; }
 
-    public string[]? ImageUrls { get; set; }
+    public string[] ImageUrls { get; set; }
 }

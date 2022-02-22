@@ -3,6 +3,7 @@ using ES.ProductService.Application.Contracts.Repositories;
 using ES.ProductService.Application.PipelineBehavior;
 using ES.ProductService.Domain.Entities;
 using ES.ProductService.Infrastructure.Context;
+using ES.ProductService.Infrastructure.Migrations;
 using ES.ProductService.Infrastructure.Models;
 using ES.ProductService.Infrastructure.Repositories;
 using MediatR;
@@ -28,6 +29,8 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<IGenericRepository<Agent>, GenericRepository<Agent, AgentModel>>();
         services.AddScoped<IGenericRepository<Product>, GenericRepository<Product, ProductModel>>();
+
+        services.AddTransient<IMigrationApplier, MigrationApplier>();
 
         services.AddDbContext<ApplicationContext>(opt =>
             opt.UseNpgsql(connectionString, x => x.MigrationsAssembly(ApplicationContext.MigrationAssembly)));

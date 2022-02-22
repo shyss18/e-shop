@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ES.ProductService.Infrastructure.Context;
 
-public class ApplicationContext : DbContext
+public sealed class ApplicationContext : DbContext
 {
     public const string ConnectionString = "ApplicationContext";
+
+    public const string MigrationAssembly = "ES.ProductService.Migrations";
     
-    public const string MigrationAssembly = "ES.ProductService.Api";
-    
+    public const string DesignTimeMigrationAssembly = "ES.ProductService.Api";
+
     public DbSet<ProductModel> Products { get; set; }
 
     public DbSet<ProductImageModel> ProductImages { get; set; }
