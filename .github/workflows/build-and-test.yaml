@@ -8,7 +8,7 @@ on:
 env:
   DOTNET_VERSION: '6.0.x'
   PRODUCT_SLN: 'product-service'
-  PRODUCT_TESTS: '~/product-service/tests/ES.ProductService.Application.UnitTests.csproj'
+  PRODUCT_TESTS: 'product-service/tests'
 
 jobs:
   build-and-test-product-service:
@@ -31,7 +31,9 @@ jobs:
       run: dotnet restore
       
     - name: Build
-      run: dotnet build ${{env.PRODUCT_SLN}}  --configuration Release --no-restore
+      working-directory: ${{env.PRODUCT_SLN}}
+      run: dotnet build --configuration Release --no-restore
     
     - name: Test
-      run: dotnet test ${{env.PRODUCT_TESTS}} --no-restore --verbosity normal
+      working-directory: ${{env.PRODUCT_TESTS}}
+      run: dotnet test --no-restore --verbosity normal
