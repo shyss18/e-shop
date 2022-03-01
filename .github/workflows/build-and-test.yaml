@@ -6,13 +6,11 @@ on:
     branches: [ main ]
 
 env:
-  DOTNET_VERSION: '6.0.x'
-  PRODUCT_SLN: 'product-service'
-  PRODUCT_TESTS: 'product-service/tests'
+  dotnet-version: '6.0.x'
+  product-sln: 'product-service'
 
 jobs:
-  build-and-test-product-service:
-
+  test-product-service:
     name: build-and-test-${{matrix.os}}
     runs-on: ${{ matrix.os }}
     strategy:
@@ -24,16 +22,12 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+        dotnet-version: ${{ env.dotnet-version }}
 
     - name: Install dependencies
-      working-directory: ${{env.PRODUCT_SLN}}
+      working-directory: ${{env.product-sln}}
       run: dotnet restore
-      
-    - name: Build
-      working-directory: ${{env.PRODUCT_SLN}}
-      run: dotnet build --configuration Release --no-restore
     
     - name: Test
-      working-directory: ${{env.PRODUCT_SLN}}
+      working-directory: ${{env.product-sln}}
       run: dotnet test --no-restore --verbosity normal
