@@ -7,7 +7,7 @@ on:
 
 env:
   DOTNET_VERSION: '6.0.x'
-  PRODUCT_SLN: '~/product-service/ES.ProductService.sln'
+  PRODUCT_SLN: 'product-service'
   PRODUCT_TESTS: '~/product-service/tests/ES.ProductService.Application.UnitTests.csproj'
 
 jobs:
@@ -27,7 +27,8 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Install dependencies
-      run: dotnet restore ${{env.PRODUCT_SLN}}
+      working-directory: ${{env.PRODUCT_SLN}}
+      run: dotnet restore
       
     - name: Build
       run: dotnet build ${{env.PRODUCT_SLN}}  --configuration Release --no-restore
