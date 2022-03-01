@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ES.ProductService.Infrastructure.Migrations;
 
+// ReSharper disable TemplateIsNotCompileTimeConstantProblem
 public class MigrationApplier : IMigrationApplier
 {
     private readonly ApplicationContext _context;

@@ -7,7 +7,7 @@ public class ExpressionVisitor : System.Linq.Expressions.ExpressionVisitor
 {
     public Dictionary<string, int> Nodes { get; } = new();
 
-    public override Expression Visit(Expression? node)
+    public override Expression Visit(Expression node)
     {
         var key = node!.NodeType.ToString();
         if (Nodes.ContainsKey(key))

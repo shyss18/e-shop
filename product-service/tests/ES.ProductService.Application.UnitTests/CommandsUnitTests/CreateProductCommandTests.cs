@@ -55,7 +55,7 @@ public class CreateProductCommandTests
         var handler = new CreateProductCommandHandler(_mockMapper.Object, _mockRepository.Object);
 
         // Act
-        var result = await handler.Handle(request, CancellationToken.None);
+        await handler.Handle(request, CancellationToken.None);
 
         // Assert
         _mockMapper.Verify(_ => _.Map<Product>(request), Times.Once);

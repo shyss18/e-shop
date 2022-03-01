@@ -1,6 +1,4 @@
-[![build](https://github.com/shyss18/e-shop/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/shyss18/e-shop/actions/workflows/build.yaml)
-
-[![test](https://github.com/shyss18/e-shop/actions/workflows/test.yaml/badge.svg)](https://github.com/shyss18/e-shop/actions/workflows/test.yaml)
+[![build](https://github.com/shyss18/e-shop/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/shyss18/e-shop/actions/workflows/build.yaml) [![test](https://github.com/shyss18/e-shop/actions/workflows/test.yaml/badge.svg)](https://github.com/shyss18/e-shop/actions/workflows/test.yaml)
 
 # E-Shop
 

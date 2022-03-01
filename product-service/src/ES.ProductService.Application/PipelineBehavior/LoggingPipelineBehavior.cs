@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ES.ProductService.Application.PipelineBehavior;
 
+// ReSharper disable TemplateIsNotCompileTimeConstantProblem
 public class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
@@ -19,6 +20,7 @@ public class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TR
         var requestName = request.GetType().Name;
         _logger.LogInformation($"Start processing request := {requestName}");
         var response = await next();
+
         _logger.LogInformation($"Finish processing request := {requestName}");
 
         return response;
