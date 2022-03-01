@@ -35,5 +35,5 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     
     - name: Test
-      working-directory: ${{env.PRODUCT_TESTS}}
+      working-directory: ${{env.PRODUCT_SLN}}
       run: dotnet test --no-restore --verbosity normal
