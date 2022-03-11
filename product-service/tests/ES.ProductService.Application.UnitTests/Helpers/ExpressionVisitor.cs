@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Expressions;
 
 namespace ES.ProductService.Application.UnitTests.Helpers;
@@ -9,6 +10,8 @@ public class ExpressionVisitor : System.Linq.Expressions.ExpressionVisitor
 
     public override Expression Visit(Expression node)
     {
+        Debug.Print("Tests");
+    
         var key = node!.NodeType.ToString();
         if (Nodes.ContainsKey(key))
         {
