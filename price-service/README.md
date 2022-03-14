@@ -1,3 +1,3 @@
 # Price service
 
-test rebase
+test rebase interactively
