@@ -1,3 +1,3 @@
 # Price service
 
-test from master rebase
+test rebase
