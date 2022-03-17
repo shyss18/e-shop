@@ -8,10 +8,11 @@ on:
 env:
   dotnet-version: '6.0.x'
   product-sln: 'product-service'
+  chat-sln: 'chat-service'
 
 jobs:
-  test-product-service:
-    name: build-and-test-${{matrix.os}}
+  build-product-service:
+    name: build-product-service-${{matrix.os}}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -30,4 +31,26 @@ jobs:
     
     - name: Build
       working-directory: ${{env.product-sln}}
+      run: dotnet build --configuration Release --no-restore
+
+  build-chat-service:
+    name: build-chat-service-${{matrix.os}}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.dotnet-version }}
+
+    - name: Install dependencies
+      working-directory: ${{env.chat-sln}}
+      run: dotnet restore
+    
+    - name: Build
+      working-directory: ${{env.chat-sln}}
       run: dotnet build --configuration Release --no-restore
