@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  chat-api:
+    container_name: "chat-api"
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "5102:5102"
+      - "7048:7048"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7048;http://+:5102
+      - ASPNETCORE_HTTPS_PORT=7048
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/ES.ChatService.pfx
+    volumes:
+      - ${HOME}/.aspnet/https:/https/
+    networks:
+      - chat-network-dev
+  
+networks:
+  chat-network-dev:
+    driver: bridge
