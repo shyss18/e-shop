@@ -6,6 +6,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{41A18B66-B59
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6967DC8B-898F-4173-ADFC-D555ADDC00B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ES.ChatService.Domain", "src\ES.ChatService.Domain\ES.ChatService.Domain.csproj", "{B713957D-8C20-4B49-AACB-3526412DBB1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,8 +18,13 @@ Global
 		{1649EFCE-E7F5-44E7-AB0D-D79C05AF5438}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1649EFCE-E7F5-44E7-AB0D-D79C05AF5438}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1649EFCE-E7F5-44E7-AB0D-D79C05AF5438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B713957D-8C20-4B49-AACB-3526412DBB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B713957D-8C20-4B49-AACB-3526412DBB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B713957D-8C20-4B49-AACB-3526412DBB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B713957D-8C20-4B49-AACB-3526412DBB1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1649EFCE-E7F5-44E7-AB0D-D79C05AF5438} = {41A18B66-B59C-4613-82F8-8D9D389F4088}
+		{B713957D-8C20-4B49-AACB-3526412DBB1D} = {41A18B66-B59C-4613-82F8-8D9D389F4088}
 	EndGlobalSection
 EndGlobal

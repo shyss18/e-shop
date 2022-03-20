@@ -11,4 +11,9 @@
       <PackageReference Include="Serilog.Expressions" Version="3.3.0" />
       <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ES.ChatService.Domain\ES.ChatService.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
