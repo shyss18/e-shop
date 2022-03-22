@@ -9,6 +9,7 @@ env:
   dotnet-version: '6.0.x'
   product-sln: 'product-service'
   chat-sln: 'chat-service'
+  auth-sln: 'auth-service'
 
 jobs:
   build-product-service:
@@ -53,4 +54,26 @@ jobs:
     
     - name: Build
       working-directory: ${{env.chat-sln}}
+      run: dotnet build --configuration Release --no-restore
+      
+  build-auth-service:
+    name: build-auth-service-${{matrix.os}}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ env.dotnet-version }}
+
+    - name: Install dependencies
+      working-directory: ${{env.auth-sln}}
+      run: dotnet restore
+    
+    - name: Build
+      working-directory: ${{env.auth-sln}}
       run: dotnet build --configuration Release --no-restore
