@@ -1,8 +1,8 @@
-using EC.AuthService.Api.Configurations;
+using EC.AuthService.Web.Configurations;
 using IdentityServer4;
 using IdentityServer4.Models;
 
-namespace EC.AuthService.Api.IS4Configurations;
+namespace EC.AuthService.Web.IS4Configurations;
 
 public static class Clients
 {

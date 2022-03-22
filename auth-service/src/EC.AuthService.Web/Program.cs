@@ -1,7 +1,6 @@
-using EC.AuthService.Api.Configurations;
-using EC.AuthService.Api.IS4Configurations;
+using EC.AuthService.Web.Extensions;
 using Serilog;
-using ConfigurationRoot = EC.AuthService.Api.Configurations.ConfigurationRoot;
+using ConfigurationRoot = EC.AuthService.Web.Configurations.ConfigurationRoot;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host
@@ -18,26 +17,8 @@ builder.Host
 
 var configuration = ConfigurationRoot.Get(Directory.GetCurrentDirectory(), builder.Environment.EnvironmentName);
 
-builder.Services
-    .AddControllers();
-
-builder.Services
-    .AddIdentityServer(options =>
-    {
-        options.IssuerUri = configuration["IdentityServer:IssuerUri"];
-        options.UserInteraction.LoginUrl = configuration["IdentityServer:LoginUrl"];
-        options.Events.RaiseErrorEvents = true;
-        options.Events.RaiseFailureEvents = true;
-        options.Events.RaiseSuccessEvents = true;
-        options.Events.RaiseInformationEvents = true;
-    })
-    .AddDeveloperSigningCredential()
-    .AddInMemoryIdentityResources(IdentityResources.Get)
-    .AddInMemoryApiScopes(ApiScopes.Get)
-    .AddInMemoryClients(Clients.Get(configuration.Get<ClientsConfiguration>()));
-
-builder.Services
-    .AddAuthentication();
+builder.Services.AddControllersWithViews();
+builder.Services.ConfigureIdentityServer(configuration);
 
 //TODO: Configure
 builder.Services.AddCors();
@@ -51,6 +32,8 @@ if (builder.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseRouting();
 

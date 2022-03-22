@@ -1,4 +1,4 @@
-namespace EC.AuthService.Api.Configurations;
+namespace EC.AuthService.Web.Configurations;
 
 public static class ConfigurationRoot
 {

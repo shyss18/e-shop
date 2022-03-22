@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "src\EC.AuthService.Api", "src\EC.AuthService.Api\EC.AuthService.Api.csproj", "{3A469046-64F3-4A2B-BB8E-F10FE8606C16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC.AuthService.Web", "src\EC.AuthService.Web\EC.AuthService.Web.csproj", "{3A469046-64F3-4A2B-BB8E-F10FE8606C16}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BCED2A02-6C13-4803-8554-3B66C917E432}"
 EndProject

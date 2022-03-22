@@ -1,15 +1,17 @@
-using EC.AuthService.Api.Models;
+using EC.AuthService.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EC.AuthService.Api.Controllers;
+namespace EC.AuthService.Web.Controllers;
 
+[AllowAnonymous]
 public class AccountController : Controller
 {
     [HttpGet]
     [Route("signin")]
     public IActionResult SignIn()
     {
-        return View();
+        return View("SignIn");
     }
 
     [HttpPost]
@@ -23,7 +25,7 @@ public class AccountController : Controller
     [Route("signup")]
     public IActionResult SignUp(SignUpViewModel signUpViewModel)
     {
-        return View();
+        return View("SignUp");
     }
 
     [HttpPost]
@@ -37,6 +39,6 @@ public class AccountController : Controller
     [Route("signout")]
     public IActionResult SignOut()
     {
-        return View();
+        return View("SignOut");
     }
 }

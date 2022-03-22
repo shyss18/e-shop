@@ -1,4 +1,4 @@
-namespace EC.AuthService.Api.Models;
+namespace EC.AuthService.Web.Models;
 
 public class SignUpViewModel
 {
