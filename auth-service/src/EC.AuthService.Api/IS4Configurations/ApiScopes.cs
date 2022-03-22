@@ -1,6 +1,6 @@
 using IdentityServer4.Models;
 
-namespace EC.AuthService.Api.ApiScopes;
+namespace EC.AuthService.Api.IS4Configurations;
 
 public static class ApiScopes
 {
