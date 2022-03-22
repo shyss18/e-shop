@@ -19,9 +19,28 @@ builder.Host
 var configuration = ConfigurationRoot.Get(Directory.GetCurrentDirectory(), builder.Environment.EnvironmentName);
 
 builder.Services
-    .AddIdentityServer()
+    .AddControllers();
+
+builder.Services
+    .AddIdentityServer(options =>
+    {
+        options.IssuerUri = configuration["IdentityServer:IssuerUri"];
+        options.UserInteraction.LoginUrl = configuration["IdentityServer:LoginUrl"];
+        options.Events.RaiseErrorEvents = true;
+        options.Events.RaiseFailureEvents = true;
+        options.Events.RaiseSuccessEvents = true;
+        options.Events.RaiseInformationEvents = true;
+    })
+    .AddDeveloperSigningCredential()
+    .AddInMemoryIdentityResources(IdentityResources.Get)
     .AddInMemoryApiScopes(ApiScopes.Get)
     .AddInMemoryClients(Clients.Get(configuration.Get<ClientsConfiguration>()));
+
+builder.Services
+    .AddAuthentication();
+
+//TODO: Configure
+builder.Services.AddCors();
 
 var app = builder.Build();
 app.UseSerilogRequestLogging();
@@ -32,6 +51,12 @@ if (builder.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
 app.UseIdentityServer();
+
+app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
 
 app.Run();
