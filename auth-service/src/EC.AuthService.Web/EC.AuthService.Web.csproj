@@ -16,10 +16,4 @@
       <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="wwwroot\css" />
-      <Folder Include="wwwroot\js" />
-      <Folder Include="wwwroot\lib" />
-    </ItemGroup>
-
 </Project>
