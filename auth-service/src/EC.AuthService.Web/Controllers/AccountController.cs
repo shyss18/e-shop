@@ -18,7 +18,7 @@ public class AccountController : Controller
     [Route("signin")]
     public IActionResult SignIn(SignInViewModel signInViewModel)
     {
-        return View();
+        return View(signInViewModel);
     }
 
     [HttpGet]

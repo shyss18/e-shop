@@ -40,6 +40,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseIdentityServer();
 
-app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();
