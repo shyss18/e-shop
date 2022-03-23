@@ -1,4 +1,5 @@
 using EC.AuthService.Web.Extensions;
+using Microsoft.AspNetCore.DataProtection;
 using Serilog;
 using ConfigurationRoot = EC.AuthService.Web.Configurations.ConfigurationRoot;
 
@@ -17,6 +18,7 @@ builder.Host
 
 var configuration = ConfigurationRoot.Get(Directory.GetCurrentDirectory(), builder.Environment.EnvironmentName);
 
+builder.Services.AddDataProtection().DisableAutomaticKeyGeneration();
 builder.Services.AddControllersWithViews();
 builder.Services.ConfigureIdentityServer(configuration);
 
@@ -32,17 +34,11 @@ if (builder.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthentication();
 app.UseIdentityServer();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapDefaultControllerRoute();
-});
+app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
 
 app.Run();
