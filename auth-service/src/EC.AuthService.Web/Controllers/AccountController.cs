@@ -23,22 +23,22 @@ public class AccountController : Controller
 
     [HttpGet]
     [Route("signup")]
-    public IActionResult SignUp(SignUpViewModel signUpViewModel)
+    public IActionResult SignUp()
     {
         return View("SignUp");
     }
 
     [HttpPost]
     [Route("signup")]
-    public IActionResult SignUp()
+    public IActionResult SignUp(SignUpViewModel signUpViewModel)
     {
-        return View();
+        return View(signUpViewModel);
     }
 
     [HttpGet]
     [Route("signout")]
     public IActionResult SignOut()
     {
-        return View("SignOut");
+        return Ok();
     }
 }
