@@ -17,12 +17,9 @@ public static class ServiceCollectionExtensions
                 options.Events.RaiseSuccessEvents = true;
                 options.Events.RaiseInformationEvents = true;
             })
-            .AddDeveloperSigningCredential()
             .AddInMemoryIdentityResources(IdentityResources.Get)
             .AddInMemoryApiScopes(ApiScopes.Get)
             .AddInMemoryClients(Clients.Get(configuration.Get<ClientsConfiguration>()));
-
-        services.AddAuthentication();
 
         return services;
     }
