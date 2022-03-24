@@ -1,4 +1,8 @@
+using System.Reflection;
+using EC.AuthService.Infrastructure;
 using EC.AuthService.Web.Extensions;
+using ES.AuthService.Application.SignIn.Commands;
+using MediatR;
 using Microsoft.AspNetCore.DataProtection;
 using Serilog;
 using ConfigurationRoot = EC.AuthService.Web.Configurations.ConfigurationRoot;
@@ -18,8 +22,15 @@ builder.Host
 
 var configuration = ConfigurationRoot.Get(Directory.GetCurrentDirectory(), builder.Environment.EnvironmentName);
 
+builder.Services.AddDbContext<ApplicationContext>();
+
+builder.Services.AddMediatR(typeof(SignInCommand).Assembly);
+builder.Services.AddAutoMapper(Assembly.GetCallingAssembly());
+
 builder.Services.AddDataProtection().DisableAutomaticKeyGeneration();
 builder.Services.AddControllersWithViews();
+
+builder.Services.ConfigureIdentity(configuration);
 builder.Services.ConfigureIdentityServer(configuration);
 
 //TODO: Configure
@@ -37,6 +48,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 app.UseIdentityServer();
 
 app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });

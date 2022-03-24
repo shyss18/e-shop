@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EC.AuthService.Web.Models;
+namespace EC.AuthService.Web.Account.Models;
 
 public class SignUpViewModel
 {
@@ -15,4 +15,6 @@ public class SignUpViewModel
     [Required]
     [DataType(DataType.Password)]
     public string Password { get; set; }
+
+    public string RedirectUrl { get; set; }
 }
