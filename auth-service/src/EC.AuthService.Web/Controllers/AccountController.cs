@@ -7,36 +7,31 @@ namespace EC.AuthService.Web.Controllers;
 [AllowAnonymous]
 public class AccountController : Controller
 {
-    [HttpGet]
-    [Route("signin")]
+    [HttpGet("signin")]
     public IActionResult SignIn()
     {
         return View("SignIn");
     }
 
-    [HttpPost]
-    [Route("signin")]
+    [HttpPost("signin")]
     public IActionResult SignIn(SignInViewModel signInViewModel)
     {
         return View(signInViewModel);
     }
 
-    [HttpGet]
-    [Route("signup")]
+    [HttpGet("signup")]
     public IActionResult SignUp()
     {
         return View("SignUp");
     }
 
-    [HttpPost]
-    [Route("signup")]
+    [HttpPost("signup")]
     public IActionResult SignUp(SignUpViewModel signUpViewModel)
     {
         return View(signUpViewModel);
     }
 
-    [HttpGet]
-    [Route("signout")]
+    [HttpPost("signout")]
     public IActionResult SignOut()
     {
         return Ok();
