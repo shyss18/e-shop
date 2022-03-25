@@ -26,7 +26,7 @@ public class SignUpCommandHandler : IRequestHandler<SignUpCommand>
         var newUser = new EsIdentityUser
         {
             Email = request.Email,
-            UserName = request.Name + " " + request.Surname
+            UserName = $"{request.Name}{request.Surname}{Guid.NewGuid()}"
         };
 
         await _userManager.CreateAsync(newUser, request.Password);

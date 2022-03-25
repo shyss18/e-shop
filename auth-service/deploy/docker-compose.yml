@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+  auth-api:
+    container_name: "auth-api"
+    depends_on:
+      - auth-postgres
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "5105:5105"
+      - "7231:7231"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7231;http://+:5105
+      - ASPNETCORE_HTTPS_PORT=7231
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/ES.ProductService.pfx
+      - ConnectionStrings__ApplicationContext=host=auth-postgres;Port=5432;Username=identityUser;Password=identityPassword;Database=identity_development;
+    volumes:
+      - ${HOME}/.aspnet/https:/https/
+    networks:
+      - auth-network-dev
+  
+  auth-postgres:
+    container_name: "auth-postgres"
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=identityPassword
+      - POSTGRES_USER=identityUser
+      - POSTGRES_DB=identity_development
+    ports:
+      - "5432:5432"
+    networks:
+      - auth-network-dev
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+
+networks:
+  auth-network-dev:
+    driver: bridge
+
+volumes:
+  postgres_volume:

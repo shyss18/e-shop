@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\EC.AuthService.Domain\EC.AuthService.Domain.csproj" />
+      <ProjectReference Include="..\ES.AuthService.Domain\ES.AuthService.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
