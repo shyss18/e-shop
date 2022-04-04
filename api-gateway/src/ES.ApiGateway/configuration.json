@@ -1,0 +1,49 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/product-service",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "product-service",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/",
+      "UpstreamHttpMethod": [
+        "POST",
+        "PUT",
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/price-service",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "price-service",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/payment-service",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "payment-service",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    }
+  ],
+  "GlobalConfiguration": {}
+}
